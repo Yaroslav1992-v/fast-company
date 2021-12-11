@@ -53,7 +53,7 @@ const Users = (user) => {
     );
 };
 Users.propTypes = {
-    people: PropTypes.array.isRequired,
+    people: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleBookMark: PropTypes.func.isRequired,
     search: PropTypes.func.isRequired
