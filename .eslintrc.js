@@ -16,7 +16,10 @@ module.exports = {
         indent: ["error", 4],
         "multiline-ternary": "off",
         semi: [2, "always"],
-        "space-before-function-paren": ["error", "never"],
+        "space-before-function-paren": [
+            "error",
+            { anonymous: "always", named: "never" }
+        ],
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "error",

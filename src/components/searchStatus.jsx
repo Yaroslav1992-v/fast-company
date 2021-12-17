@@ -8,12 +8,11 @@ const renderPhrase = (number) => {
         number > 0
             ? ` ${hangOut}  с тобой сегодня`
             : " никто не тусанет с тобой";
-
     let hangOutClass = "badge ";
     hangOutClass += number > 0 ? "bg-primary" : "bg-danger";
     return (
         <span className={hangOutClass}>
-            {number}
+            {number > 0 ? number : ""}
             {phrase}
         </span>
     );
