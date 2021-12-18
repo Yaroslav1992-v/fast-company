@@ -1,5 +1,5 @@
 import React from "react";
-const renderPhrase = (number) => {
+const renderPhrase = (number, check) => {
     const num = number % 10;
     const bool = number > 11 && number < 15;
     const hangOut =
@@ -7,9 +7,9 @@ const renderPhrase = (number) => {
     const phrase =
         number > 0
             ? ` ${hangOut}  с тобой сегодня`
-            : " никто не тусанет с тобой";
+            : !check ? "Загрузка..." : " никто не тусанет с тобой";
     let hangOutClass = "badge ";
-    hangOutClass += number > 0 ? "bg-primary" : "bg-danger";
+    hangOutClass += !check ? "bg-secondary" : number > 0 ? "bg-primary" : "bg-danger";
     return (
         <span className={hangOutClass}>
             {number > 0 ? number : ""}
