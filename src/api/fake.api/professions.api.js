@@ -9,7 +9,7 @@ export const professionsObject = {
     banker: { _id: "67rdca3eeb74rted471829", name: "Банкир" },
     agent: { _id: "674dc53eeb7f6fgeed471829", name: "Спец-Анент" },
     spy: { _id: "67rdca3ee27f6fgeed471829", name: "Шпион" },
-    queen: { _id: "67rdca3eeb7f6sveed471829", name: "Koролева" },
+    queen: { _id: "67rdca3eeb7f6sveed471829", name: "Королева" },
     sales: { _id: "67rdca3eertsxsveed471829", name: "Продавец" }
 };
 export const professions = [

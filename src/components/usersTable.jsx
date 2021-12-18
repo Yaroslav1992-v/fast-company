@@ -21,7 +21,7 @@ const UserTable = (userCrop) => {
         },
         rate: { path: "rate", name: "Оценка" },
         bookmark: {
-            path: "bookMark",
+            path: "bookmark",
             name: "Избранное",
             component: (user) => (
                 <BookMark
