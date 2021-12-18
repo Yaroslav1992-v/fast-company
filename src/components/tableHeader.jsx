@@ -2,24 +2,41 @@ import React from "react";
 import PropTypes from "prop-types";
 const TableHeader = ({ onSort, selectedSort, columns }) => {
     const handleSort = (item) => {
-        if (selectedSort.iter === item) {
+        if (selectedSort.path === item) {
             onSort({
                 ...selectedSort,
                 order: selectedSort.order === "asc" ? "desc" : "asc"
             });
         } else {
-            onSort({ iter: item, order: "asc" });
+            onSort({ path: item, order: "asc" });
         }
     };
+    const renderArrow = (selectedSort, path) => {
+        if (selectedSort.path === path) {
+            if (selectedSort.order === "asc") {
+                return <i className="bi bi-caret-up-fill"></i>;
+            } else {
+                return <i className="bi bi-caret-down-fill"></i>;
+            }
+        }
+        return null;
+    };
     return (
-        <thead><tr>{Object.keys(columns).map((column) => (
-            <th
-                key={column}
-                onClick={columns[column].iter ? () => handleSort(columns[column].iter) : undefined}
-                scope="col"
-            >{columns[column].name}
-            </th>))};</tr>
-        </thead >
+        <thead>
+            <tr>{Object.keys(columns).map((column) => (
+                <th
+                    key={column}
+                    onClick={
+                        columns[column].path
+                            ? () => handleSort(columns[column].path)
+                            : undefined
+                    }
+                    scope="col"
+                >{columns[column].name}{columns[column].path ? renderArrow(selectedSort, columns[column].path) : undefined}
+                </th>
+            ))}
+            </tr>
+        </thead>
     );
 };
 TableHeader.propTypes = {

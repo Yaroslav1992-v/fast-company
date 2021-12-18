@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "./pagination";
 import { paginate } from "./utils/paginate";
-import PropTypes from "prop-types";
 import api from "../api";
 import GroupList from "./utils/groupList";
 import searchStatus from "./searchStatus";
 import UserTable from "./usersTable";
 import _ from "lodash";
-const Users = (user) => {
-    const { people, handleDelete, handleBookMark } = user;
+const Users = () => {
     const [professions, setProfession] = useState();
     const [selectedProf, setSelectedProf] = useState();
-    const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" });
+    const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const pageSize = 8;
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        api.users.fetchAll().then((data) => setUsers(data));
+    }, []);
+    const handleDelete = (userId) => {
+        setUsers((prevState) => prevState.filter((id) => id._id !== userId));
+    };
+    const handleBookMark = (id) => {
+        setUsers(
+            users.map((user) => {
+                if (user._id === id) {
+                    return { ...user, bookmark: !user.bookmark };
+                }
+                return user;
+            })
+        );
+    };
     useEffect(() => {
         api.professions.fetchAll().then((data) => setProfession(data));
     });
@@ -28,10 +43,10 @@ const Users = (user) => {
     };
 
     const filteredUsers = selectedProf
-        ? people.filter((user) => user.profession.name === selectedProf.name)
-        : people;
+        ? users.filter((user) => user.profession.name === selectedProf.name)
+        : users;
     const count = filteredUsers.length;
-    const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
+    const sortedUsers = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
     const userCrop = paginate(sortedUsers, currentPage, pageSize);
     const clearFilter = () => {
         setSelectedProf();
@@ -84,10 +99,5 @@ const Users = (user) => {
             </div>
         </div>
     );
-};
-Users.propTypes = {
-    people: PropTypes.arrayOf(PropTypes.object, PropTypes.array).isRequired,
-    handleDelete: PropTypes.func.isRequired,
-    handleBookMark: PropTypes.func.isRequired
 };
 export default Users;

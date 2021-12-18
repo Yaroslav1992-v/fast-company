@@ -41,7 +41,8 @@ const users = [
         profession: professions.doctor,
         qualities: [qualities.tedious, qualities.uncertain, qualities.strange],
         completedMeetings: 36,
-        rate: 2.5
+        rate: 2.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471816",
@@ -49,7 +50,8 @@ const users = [
         profession: professions.doctor,
         qualities: [qualities.buller, qualities.handsome, qualities.alcoholic],
         completedMeetings: 15,
-        rate: 2.5
+        rate: 2.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471817",
@@ -57,7 +59,8 @@ const users = [
         profession: professions.doctor,
         qualities: [qualities.buller],
         completedMeetings: 247,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471818",
@@ -65,7 +68,8 @@ const users = [
         profession: professions.waiter,
         qualities: [qualities.uncertain],
         completedMeetings: 148,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471819",
@@ -73,7 +77,8 @@ const users = [
         profession: professions.physics,
         qualities: [qualities.strange, qualities.tedious],
         completedMeetings: 37,
-        rate: 4.6
+        rate: 4.6,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471820",
@@ -81,7 +86,8 @@ const users = [
         profession: professions.physics,
         qualities: [qualities.strange, qualities.uncertain],
         completedMeetings: 147,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471821",
@@ -89,7 +95,8 @@ const users = [
         profession: professions.engineer,
         qualities: [qualities.strange, qualities.tedious],
         completedMeetings: 72,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471822",
@@ -97,7 +104,8 @@ const users = [
         profession: professions.engineer,
         qualities: [qualities.handsome],
         completedMeetings: 72,
-        rate: 5
+        rate: 5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471823",
@@ -105,7 +113,8 @@ const users = [
         profession: professions.cook,
         qualities: [qualities.strange, qualities.uncertain],
         completedMeetings: 17,
-        rate: 4.5
+        rate: 4.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471824",
@@ -113,7 +122,8 @@ const users = [
         profession: professions.cook,
         qualities: [qualities.handsome, qualities.buller],
         completedMeetings: 17,
-        rate: 4.5
+        rate: 4.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed47181f",
@@ -121,7 +131,8 @@ const users = [
         profession: professions.actor,
         qualities: [qualities.uncertain, qualities.strange],
         completedMeetings: 434,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed47181r",
@@ -129,7 +140,8 @@ const users = [
         profession: professions.actor,
         qualities: [qualities.handsome],
         completedMeetings: 434,
-        rate: 5
+        rate: 5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed47112s",
@@ -137,7 +149,8 @@ const users = [
         profession: professions.cop,
         qualities: [qualities.uncertain, qualities.strange],
         completedMeetings: 90,
-        rate: 4
+        rate: 4,
+        bookmark: false
     },
     {
         _id: "67rdcdsa7f6fgeed47112s",
@@ -145,7 +158,8 @@ const users = [
         profession: professions.agent,
         qualities: [qualities.buller, qualities.handsome],
         completedMeetings: 34,
-        rate: 4.5
+        rate: 4.5,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7fasgeed47112s",
@@ -153,7 +167,8 @@ const users = [
         profession: professions.queen,
         qualities: [qualities.buller, qualities.alcoholic],
         completedMeetings: 234,
-        rate: 4.5
+        rate: 4.5,
+        bookmark: false
     },
     {
         _id: "67rdcaxxs7f6fgeed47112s",
@@ -161,7 +176,8 @@ const users = [
         profession: professions.spy,
         qualities: [qualities.buller, qualities.handsome, qualities.alcoholic],
         completedMeetings: 139,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rxcaxxs8f6fgeed47112s",
@@ -169,7 +185,8 @@ const users = [
         profession: professions.banker,
         qualities: [qualities.buller, qualities.smart, qualities.alcoholic],
         completedMeetings: 19,
-        rate: 5
+        rate: 5,
+        bookmark: false
     },
     {
         _id: "67rxcaxxs8f6fgeedl7112p",
@@ -177,7 +194,8 @@ const users = [
         profession: professions.cook,
         qualities: [qualities.dumb, qualities.tedious],
         completedMeetings: 89,
-        rate: 2
+        rate: 2,
+        bookmark: false
     },
     {
         _id: "67rxcaxsad8f6fgeedl7112p",
@@ -185,7 +203,8 @@ const users = [
         profession: professions.cook,
         qualities: [qualities.smart, qualities.buller],
         completedMeetings: 28,
-        rate: 5
+        rate: 5,
+        bookmark: false
     },
     {
         _id: "67rxcaxxs8s6fgeed47112s",
@@ -193,7 +212,8 @@ const users = [
         profession: professions.queen,
         qualities: [qualities.buller, qualities.alcoholic],
         completedMeetings: 1239,
-        rate: 3
+        rate: 3,
+        bookmark: false
     },
     {
         _id: "67rxcaxxs8faseed47112s",
@@ -201,7 +221,8 @@ const users = [
         profession: professions.sales,
         qualities: [qualities.dumb, qualities.tedious],
         completedMeetings: 831,
-        rate: 3
+        rate: 3,
+        bookmark: false
     },
     {
         _id: "67rxcasxs8faseed47112s",
@@ -209,7 +230,8 @@ const users = [
         profession: professions.engineer,
         qualities: [qualities.smart, qualities.handsome],
         completedMeetings: 239,
-        rate: 3.5
+        rate: 3.5,
+        bookmark: false
     },
     {
         _id: "67rxcasxs8facdsa7112s",
@@ -217,7 +239,8 @@ const users = [
         profession: professions.cop,
         qualities: [qualities.strange],
         completedMeetings: 219,
-        rate: 3
+        rate: 3,
+        bookmark: false
     }
 ];
 

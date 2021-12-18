@@ -1,36 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
-import User from "./user";
-import TableHeader from "./tableHeader";
+import BookMark from "./bookMark";
+import QualitiesList from "./qualitesList";
+import Table from "./table";
 const UserTable = (userCrop) => {
-    const { users, handleDelete, handleBookMark, onSort, selectedSort } =
+    const { users, onSort, selectedSort, handleBookMark, handleDelete } =
         userCrop;
     const columns = {
-        name: { iter: "name", name: "Имя" },
-        qualities: { name: "Kачества" },
-        professions: { iter: "profession.name", name: "Профессия" },
+        name: { path: "name", name: "Имя" },
+        qualities: {
+            name: "Kачества",
+            component: (user) => (
+                <QualitiesList qualities={user.qualities}></QualitiesList>
+            )
+        },
+        professions: { path: "profession.name", name: "Профессия" },
         completedMeetings: {
-            iter: "completedMeetings",
+            path: "completedMeetings",
             name: "Встретился,Раз"
         },
-        rate: { iter: "rate", name: "Оценка" },
-        bookmark: { iter: "bookMark", name: "Избранное" },
-        delete: {}
+        rate: { path: "rate", name: "Оценка" },
+        bookmark: {
+            path: "bookMark",
+            name: "Избранное",
+            component: (user) => (
+                <BookMark
+                    status={user.bookmark}
+                    onClick={() => handleBookMark(user._id)}
+                ></BookMark>
+            )
+        },
+        delete: {
+            component: (user) => (
+                <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(user._id)}
+                >
+                    Delete
+                </button>
+            )
+        }
     };
     return (
-        <table className="table">
-            <TableHeader {...{ onSort, selectedSort, columns }} />
-            <tbody>
-                {users.map((user) => (
-                    <User
-                        key={user._id}
-                        {...user}
-                        handleDelete={handleDelete}
-                        handleBookMark={handleBookMark}
-                    ></User>
-                ))}
-            </tbody>
-        </table>
+        <Table onSort={onSort} selectedSort={selectedSort} columns={columns} data={users}/>
     );
 };
 

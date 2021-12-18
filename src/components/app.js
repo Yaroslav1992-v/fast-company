@@ -10,12 +10,14 @@ function App() {
         setUsers((prevState) => prevState.filter((id) => id._id !== userId));
     };
     const handleBookMark = (id) => {
-        const mark = document.getElementById(id);
-        if (mark.className === "bi bi-bookmark") {
-            mark.className += "-fill";
-        } else {
-            mark.className = "bi bi-bookmark";
-        }
+        setUsers(
+            users.map((user) => {
+                if (user._id === id) {
+                    return { ...user, bookmark: !user.bookmark };
+                }
+                return user;
+            })
+        );
     };
     return (
         <div>

@@ -1,18 +1,16 @@
 import React from "react";
-const renderQualities = (qualities) => {
-    const getBageClasses = (color) => {
-        let classes = "badge rounded-pill m-2 bg-";
-        classes += color;
-        return classes;
-    };
-    return qualities.map((quality) => {
-        const { _id, color, name } = quality;
-        return (
-            <span key={_id} className={getBageClasses(color)}>
-                {name}
-            </span>
-        );
-    });
+import PropTypes from "prop-types";
+const Quality = ({ color, name, _id }) => {
+    return (
+        <span className={"badge m-1 bg-" + color} key={_id}>
+            {name}
+        </span>
+    );
+};
+Quality.propTypes = {
+    color: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired
 };
 
-export default renderQualities;
+export default Quality;
