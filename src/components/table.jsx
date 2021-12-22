@@ -4,8 +4,14 @@ import TableBody from "./utils/tableBody";
 import TableHeader from "./tableHeader";
 const Table = ({ onSort, selectedSort, columns, data, children }) => {
     return (
-        <table className="table">{children || <><TableHeader {...{ onSort, selectedSort, columns }}/>
-            <TableBody {...{ columns, data }}></TableBody></>}</table>
+        <table className="table">
+            {children || (
+                <>
+                    <TableHeader {...{ onSort, selectedSort, columns }} />
+                    <TableBody {...{ columns, data }}></TableBody>
+                </>
+            )}
+        </table>
     );
 };
 Table.propTypes = {
