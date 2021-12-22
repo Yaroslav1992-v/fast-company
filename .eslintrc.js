@@ -20,7 +20,7 @@ module.exports = {
             "error",
             { anonymous: "always", named: "never" }
         ],
-        "padded-blocks": ["error", "never"],
+        "padded-blocks": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "error",

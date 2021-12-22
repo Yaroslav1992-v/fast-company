@@ -3,11 +3,20 @@ import PropTypes from "prop-types";
 import BookMark from "./bookMark";
 import QualitiesList from "./qualitesList";
 import Table from "./table";
+import { Link } from "react-router-dom";
 const UserTable = (userCrop) => {
     const { users, onSort, selectedSort, handleBookMark, handleDelete } =
         userCrop;
     const columns = {
-        name: { path: "name", name: "Имя" },
+        name: {
+            path: "name",
+            name: "Имя",
+            component: (user) => (
+                <>
+                    <Link className="link-info" to={`/users/${user._id}`}>{user.name}</Link>
+                </>
+            )
+        },
         qualities: {
             name: "Kачества",
             component: (user) => (
@@ -42,7 +51,12 @@ const UserTable = (userCrop) => {
         }
     };
     return (
-        <Table onSort={onSort} selectedSort={selectedSort} columns={columns} data={users}/>
+        <Table
+            onSort={onSort}
+            selectedSort={selectedSort}
+            columns={columns}
+            data={users}
+        />
     );
 };
 

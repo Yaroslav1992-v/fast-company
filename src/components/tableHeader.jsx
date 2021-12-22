@@ -21,20 +21,26 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
         }
         return null;
     };
+
     return (
         <thead>
-            <tr>{Object.keys(columns).map((column) => (
-                <th
-                    key={column}
-                    onClick={
-                        columns[column].path
-                            ? () => handleSort(columns[column].path)
-                            : undefined
-                    }
-                    scope="col"
-                >{columns[column].name}{columns[column].path ? renderArrow(selectedSort, columns[column].path) : undefined}
-                </th>
-            ))}
+            <tr>
+                {Object.keys(columns).map((column) => (
+                    <th
+                        key={column}
+                        onClick={
+                            columns[column].path
+                                ? () => handleSort(columns[column].path)
+                                : undefined
+                        }
+                        scope="col"
+                    >
+                        {columns[column].name}
+                        {columns[column].path
+                            ? renderArrow(selectedSort, columns[column].path)
+                            : undefined}
+                    </th>
+                ))}
             </tr>
         </thead>
     );
