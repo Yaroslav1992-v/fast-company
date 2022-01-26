@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Pagination from "./pagination";
-import { paginate } from "./utils/paginate";
-import api from "../api";
-import GroupList from "./utils/groupList";
-import searchStatus from "./searchStatus";
-import UserTable from "./usersTable";
+import Pagination from "../../common/pagination";
+import { paginate } from "../../utils/paginate";
+import api from "../../../api";
+import GroupList from "../../common/groupList";
+import searchStatus from "../../common/ui/searchStatus";
+import UserTable from "../../common/ui/usersTable";
 import _ from "lodash";
-import SearchBar from "./searchBar";
+import SearchBar from "../../searchBar";
 const Users = () => {
     const [professions, setProfession] = useState();
     const [selectedProf, setSelectedProf] = useState();

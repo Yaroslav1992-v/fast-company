@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import BookMark from "./bookMark";
-import QualitiesList from "./qualitesList";
-import Table from "./table";
+import BookMark from "../bookMark";
+import Qualities from "./qualities";
+import Table from "../table/table";
 import { Link } from "react-router-dom";
 const UserTable = (userCrop) => {
     const { users, onSort, selectedSort, handleBookMark, handleDelete } =
@@ -20,7 +20,7 @@ const UserTable = (userCrop) => {
         qualities: {
             name: "Kачества",
             component: (user) => (
-                <QualitiesList qualities={user.qualities}></QualitiesList>
+                <Qualities qualities={user.qualities}></Qualities>
             )
         },
         professions: { path: "profession.name", name: "Профессия" },
