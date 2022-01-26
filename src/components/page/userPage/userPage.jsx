@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import api from "../api";
-import QualitiesList from "./qualitesList";
+import api from "../../../api";
+import QualitiesList from "../../common/ui/qualities/qualitesList";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const UserPage = ({ id }) => {
     const [user, setUser] = useState();
@@ -17,7 +17,7 @@ const UserPage = ({ id }) => {
                     <QualitiesList qualities={user.qualities}></QualitiesList>
                     <p className="card-text">comepleted Meetings: {user.completedMeetings}</p>
                     <p className="card-text">Rate: {user.rate}</p>
-                    <Link className="btn btn-secondary" to="/users">Все пользователи</Link>
+                    <Link className="btn btn-primary" to={`/users/${id}/edit`}>Исправить</Link>
                 </div>
             </div>);
     } else {

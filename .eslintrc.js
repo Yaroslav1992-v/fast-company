@@ -20,6 +20,8 @@ module.exports = {
             "error",
             { anonymous: "always", named: "never" }
         ],
+        "eol-last": ["off"],
+        "multiline-ternary": ["off"],
         "padded-blocks": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
