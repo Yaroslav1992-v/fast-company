@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import api from "../../../api";
-import QualitiesList from "../../common/ui/qualities/qualitesList";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import UserCard from "../../common/ui/userCard";
+import QualitiesCard from "../../common/ui/qualitiesCard";
+import MeetingsCard from "../../common/ui/meetingsCard";
+import Comments from "../../common/ui/comments";
+// import QualitiesList from "../../common/ui/qualities/qualitesList";
 const UserPage = ({ id }) => {
     const [user, setUser] = useState();
     useEffect(() => {
@@ -10,14 +13,16 @@ const UserPage = ({ id }) => {
     }, []);
     if (user) {
         return (
-            <div className="card border-info mb-3" style={{ maxWidth: "20rem" }}>
-                <div className="card-header "><h2 className="card-title">{user.name}</h2></div>
-                <div className="card-body">
-                    <h5 className="card-title">Профессия:{user.profession.name}</h5>
-                    <QualitiesList qualities={user.qualities}></QualitiesList>
-                    <p className="card-text">comepleted Meetings: {user.completedMeetings}</p>
-                    <p className="card-text">Rate: {user.rate}</p>
-                    <Link className="btn btn-primary" to={`/users/${id}/edit`}>Исправить</Link>
+            <div className="container">
+                <div className="row gutters-sm" >
+                    <div className="col-md-4 mb-3">
+                        <UserCard user={user} />
+                        <QualitiesCard data={user.qualities} />
+                        <MeetingsCard value={user.rate} />
+                    </div>
+                    <div className="col-md-8">
+                        <Comments />
+                    </div>
                 </div>
             </div>);
     } else {
