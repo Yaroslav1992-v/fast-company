@@ -8,25 +8,25 @@ module.exports = {
         ecmaFeatures: {
             jsx: true
         },
+        ecmaVersion: 12,
         sourceType: "module"
     },
     plugins: ["react"],
     rules: {
-        "react/prop-types": ["error"],
-        indent: ["error", 4],
-        "multiline-ternary": "off",
+        "operator-linebreak": ["off"],
         semi: [2, "always"],
+        indent: [0, 4],
         "space-before-function-paren": [
             "error",
             { anonymous: "always", named: "never" }
         ],
-        "eol-last": ["off"],
         "multiline-ternary": ["off"],
-        "padded-blocks": "off",
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error",
-        quotes: ["error", "double", { allowTemplateLiterals: true }]
+        quotes: [
+            "error",
+            "double",
+            {
+                allowTemplateLiterals: true
+            }
+        ]
     }
 };
