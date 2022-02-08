@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/form/textField";
 import CheckBoxField from "../common/form/checkBoxField";
+import { useLogin } from "../../hooks/useLogin";
 
 const LoginForm = () => {
     const [data, setData] = useState({
@@ -16,6 +17,7 @@ const LoginForm = () => {
             [target.name]: target.value
         }));
     };
+    const { Login } = useLogin();
     const validatorConfig = {
         email: {
             isRequired: {
@@ -51,9 +53,14 @@ const LoginForm = () => {
     };
     const isValid = Object.keys(errors).length === 0;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const isValid = validate();
+        try {
+            await Login({ ...data });
+        } catch (error) {
+            setErrors(error);
+        }
         if (!isValid) return;
         console.log(data);
     };
