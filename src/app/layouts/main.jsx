@@ -7,10 +7,8 @@ const Main = () => {
         initialize();
         console.log("click");
     };
-    if (localStorage.getItem("jwt-refresh-token")) {
-        return <h1> Добро пожаловать </h1>;
-    } else {
-        return <div className="container mt-5">
+    return (
+        <div className="container mt-5">
             <h1> Main Page</h1>
             <h3>Инициализация данных в FireBase</h3>
             <ul>
@@ -18,9 +16,11 @@ const Main = () => {
                 <li>Progress:{progress}%</li>
                 {error && <li>error: {error}</li>}
             </ul>
-            <button className="btn btn-primary" onClick={handleClick}>Инициализировать</button>
-        </div>;
-    }
+            <button className="btn btn-primary" onClick={handleClick}>
+                Инициализировать
+            </button>
+        </div>
+    );
 };
 
 export default Main;
