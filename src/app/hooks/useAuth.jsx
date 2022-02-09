@@ -15,8 +15,13 @@ const AuthProvider = ({ children }) => {
     async function signUp({ email, password, ...rest }) {
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_KEY}`;
         try {
-            const { data } = await httpAuth.post(url, { email, password, returnSecureToken: true });
+            const { data } = await httpAuth.post(url, {
+                email,
+                password,
+                returnSecureToken: true
+            });
             setTokens(data);
+            console.log(data);
             await createUser({ _id: data.localId, email, ...rest });
         } catch (error) {
             errorCatcher(error);
@@ -24,7 +29,9 @@ const AuthProvider = ({ children }) => {
             console.log(code, message);
             if (code === 400) {
                 if (message === "EMAIL_EXISTS") {
-                    const errorObject = { email: "Пользователь с таким Email уже существует" };
+                    const errorObject = {
+                        email: "Пользователь с таким Email уже существует"
+                    };
                     throw errorObject;
                 }
             }
@@ -48,11 +55,16 @@ const AuthProvider = ({ children }) => {
             setError(null);
         }
     }, [error]);
-    return (<AuthContext.Provider value={{ signUp, currentUser }}>
-        {children}
-    </AuthContext.Provider>);
+    return (
+        <AuthContext.Provider value={{ signUp, currentUser }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 AuthProvider.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
 };
 export default AuthProvider;

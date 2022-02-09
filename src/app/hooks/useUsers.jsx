@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
     async function getUsers() {
         try {
             const { content } = await userSerice.get();
+            console.log(content);
             setUsers(content);
             setLoading(false);
         } catch (error) {

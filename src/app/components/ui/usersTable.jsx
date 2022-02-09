@@ -19,14 +19,19 @@ const UserTable = ({
             path: "name",
             name: "Имя",
             component: (user) => (
-                <Link to={`/users/${user._id}`}>{user.name}</Link>
+                <Link to={`/users/${user._id}`}>
+                    {user.name ? user.name : user.email}
+                </Link>
             )
         },
         qualities: {
             name: "Качества",
             component: (user) => <Qualities qualities={user.qualities} />
         },
-        professions: { name: "Профессия", component: (user) => <Profession id={user.profession}></Profession> },
+        professions: {
+            name: "Профессия",
+            component: (user) => <Profession id={user.profession}></Profession>
+        },
         completedMeetings: {
             path: "completedMeetings",
             name: "Встретился, раз"
