@@ -13,7 +13,6 @@ module.exports = {
     },
     plugins: ["react"],
     rules: {
-        "operator-linebreak": ["off"],
         semi: [2, "always"],
         indent: [0, 4],
         "space-before-function-paren": [
@@ -25,7 +24,8 @@ module.exports = {
             "error",
             "double",
             {
-                allowTemplateLiterals: true
+                allowTemplateLiterals: true,
+                avoidEscape: true
             }
         ]
     }
