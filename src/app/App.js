@@ -8,25 +8,31 @@ import NavBar from "./components/ui/navBar";
 import { ProfessionProvider } from "./hooks/useProfession";
 import { QualitiesProvider } from "./hooks/useQualities";
 import AuthProvider from "./hooks/useAuth";
-import LoginProvider from "./hooks/useLogin";
+import ProtectedRoute from "./components/common/protectedRoute";
+import LogOut from "./layouts/logOut";
+
 function App() {
     return (
         <div>
             <AuthProvider>
-                <LoginProvider>
-                    <NavBar />
+                <NavBar />
+
+                <QualitiesProvider>
                     <ProfessionProvider>
-                        <QualitiesProvider>
-                            <Switch>
-                                <Route path="/users/:userId?/:edit?" component={Users} />
-                                <Route path="/login/:type?" component={Login} />
-                                <Route path="/" exact component={Main} />
-                            </Switch>
+                        <Switch>
+                            <ProtectedRoute
+                                path="/users/:userId?/:edit?"
+                                component={Users}
+                            />
+                            <Route path="/login/:type?" component={Login} />
+                            <Route path="/logout" component={LogOut} />
+                            <Route path="/" exact component={Main} />
                             <Redirect to="/" />
-                        </QualitiesProvider>
+                        </Switch>
                     </ProfessionProvider>
-                </LoginProvider>
+                </QualitiesProvider>
             </AuthProvider>
+
             <ToastContainer />
         </div>
     );

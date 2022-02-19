@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import userSerice from "../services/user.service";
+import userService from "../services/user.service";
 import { toast } from "react-toastify";
+
 const UserContext = React.createContext();
+
 export const useUser = () => {
     return useContext(UserContext);
 };
+
 const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(true);
@@ -21,8 +24,7 @@ const UserProvider = ({ children }) => {
     }, [error]);
     async function getUsers() {
         try {
-            const { content } = await userSerice.get();
-            console.log(content);
+            const { content } = await userService.get();
             setUsers(content);
             setLoading(false);
         } catch (error) {
@@ -34,12 +36,21 @@ const UserProvider = ({ children }) => {
         setError(message);
         setLoading(false);
     }
-    return (<UserContext.Provider value={{ users }}>
-        {!isLoading ? children : "Is Loading...."}
-    </UserContext.Provider>);
+    function getUserById(userId) {
+        return users.find((u) => u._id === userId);
+    }
+    return (
+        <UserContext.Provider value={{ users, getUserById }}>
+            {!isLoading ? children : "Loading..."}
+        </UserContext.Provider>
+    );
 };
+
 UserProvider.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
 };
 
 export default UserProvider;
