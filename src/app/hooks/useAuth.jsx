@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import userService from "../services/user.service";
 import localStorageService, {
-    getAccessToken,
     setTokens
 } from "../services/localStorage.service";
 import { useHistory } from "react-router-dom";
@@ -64,6 +63,14 @@ const AuthProvider = ({ children }) => {
     function randomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
+    async function updateUserData(data) {
+        try {
+            const { content } = await userService.update(data);
+            setUser(content);
+        } catch (error) {
+            errorCatcher(error);
+        }
+    }
     async function signUp({ email, password, ...rest }) {
         try {
             const { data } = await httpAuth.post(`accounts:signUp`, {
@@ -71,7 +78,6 @@ const AuthProvider = ({ children }) => {
                 password,
                 returnSecureToken: true
             });
-            console.log(data);
             setTokens(data);
             await createUser({
                 _id: data.localId,
@@ -99,47 +105,13 @@ const AuthProvider = ({ children }) => {
             }
         }
     }
-    async function update({ email, name, ...rest }) {
-        console.log(name);
-        console.log(rest);
-        const idToken = getAccessToken();
-        try {
-            const { data } = await httpAuth.post(`accounts:update`, {
-                idToken,
-                email,
-                returnSecureToken: true
-            });
-            console.log(data);
-
-            editUser({
-                _id: data.localId,
-                name,
-                email,
-                ...rest
-            });
-            if (data.idToken) {
-                setTokens(data);
-            }
-        } catch (error) {
-            errorCatcher(error);
-        }
-    }
     async function createUser(data) {
         try {
-            console.log(data);
             const { content } = await userService.create(data);
             console.log(content);
             setUser(content);
         } catch (error) {
             errorCatcher(error);
-        }
-    }
-    async function editUser(data) {
-        try {
-            const { content } = await userService.updateUser(data);
-            setUser(content);
-        } catch (error) {
-            console.log(error);
         }
     }
     function errorCatcher(error) {
@@ -171,7 +143,7 @@ const AuthProvider = ({ children }) => {
     }, [error]);
     return (
         <AuthContext.Provider
-            value={{ signUp, logIn, currentUser, logOut, update }}
+            value={{ signUp, logIn, currentUser, logOut, updateUserData }}
         >
             {!isLoading ? children : "Loading..."}
         </AuthContext.Provider>

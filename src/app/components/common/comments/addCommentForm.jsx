@@ -32,7 +32,7 @@ const AddCommentForm = ({ onSubmit }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validate();
-        if (!isValid) return;
+        if (!isValid || Object.keys(data).length === 0) return;
         onSubmit(data);
         clearForm();
     };
